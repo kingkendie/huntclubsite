@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARTY CREW - WE THROW THE WILDEST RAVES</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Ever After', monospace;
+            background: url('fallbackground.jpg') center center fixed /*#964B00*/;
+            background-size: cover;
+            color: #000000;
+            overflow-x: hidden;
+            font-weight: thin;
+            letter-spacing: 2px;
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Glitch Background Effect */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(245, 245, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(245, 245, 220, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(245, 245, 220, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        /* Logo/Title */
+        .logo {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 10;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-shadow: 
+                0 0 10px #CC5500,
+                0 0 20px #CC5500,
+                0 0 30px #CC5500;
+            animation: glitch 2s infinite;
+            line-height: 1.1;
+        }
+
+        /* Flyer Image */
+        .flyer-image {
+            max-width: 500px;
+            width: 90%;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+            border: 3px solid #CC5500;
+            box-shadow: 
+                0 0 20px #CC5500,
+                0 0 40px rgba(245, 245, 220, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .flyer-image:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 30px #CC5500,
+                0 0 60px rgba(245, 245, 220, 0.7);
+        }
+
+        /* Main Text Block */
+        .main-text {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            text-align: left;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main-text strong {
+            color: #CC5500;
+            text-shadow: 0 0 10px #fafafa;
+        }
+
+        .hashtag {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .emphasis {
+            color: #ffff00;
+            text-shadow: 0 0 10px #ffff00;
+        }
+
+        /* Call to Action */
+        .cta {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin: 3rem 0;
+            color: #CC5500;
+            text-shadow: 
+                0 0 10px #CC5500,
+                0 0 20px #CC5500;
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        .final-welcome {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-top: 3rem;
+            color: #00ffff;
+            text-shadow: 
+                0 0 10px #00ffff,
+                0 0 20px #00ffff;
+            animation: flicker 3s infinite;
+        }
+
+        /* Navigation Menu */
+        .menu {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+        }
+
+        .menu-item {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .menu-item:hover {
+            color: #CC5500;
+            text-shadow: 0 0 10px #CC5500;
+            transform: translateX(10px);
+        }
+
+        /* Social Links */
+        .social-links {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .social-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            color: #000000;
+            background: #ffffff;
+            box-shadow: 0 0 20px #ffffff;
+        }
+
+        /* Hidden Sections */
+        .section {
+            display: none;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #CC5500;
+            text-shadow: 0 0 10px #CC5500;
+            text-align: center;
+        }
+
+        /* Events styling */
+        .event {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #CC5500;
+        }
+
+        .event-date {
+            color: #00ffff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            color: #ffff00;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #666666;
+        }
+
+        .contact-form button {
+            background: transparent;
+            border: 2px solid #CC5500;
+            color: #CC5500;
+            padding: 1rem 2rem;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-form button:hover {
+            background: #CC5500;
+            color: #000000;
+            box-shadow: 0 0 20px #CC5500;
+        }
+
+        /* Falling Stars */
+        .falling-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .falling-star {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            10% { transform: translate(-2px, -2px); }
+            20% { transform: translate(2px, 2px); }
+            30% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            50% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            70% { transform: translate(-2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            90% { transform: translate(-2px, -2px); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+            75% { opacity: 0.9; }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                position: static;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .menu-item {
+                display: inline-block;
+                margin-right: 1rem;
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .social-links {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 2rem;
+            }
+            
+            .main-text {
+                text-align: center;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Falling Stars Container -->
+    <div class="falling-container" id="fallingContainer"></div>
+
+    <!-- Navigation Menu -->
+    <div class="menu">
+        <a href="#" class="menu-item" onclick="showSection('home')">HOME</a>
+        <a href="#" class="menu-item" onclick="showSection('events')">EVENTS</a>
+        <a href="#" class="menu-item" onclick="showSection('contact')">CONTACT</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content">
+            
+            <div id="home" class="section active">
+                <div class="text">huntclubhuntclub</div>
+                
+                
+                <div class="cta">Coming up:</div>
+                
+                <a href="https://maps.app.goo.gl/MRb53yYK6NrcyUPx7">
+                <img src="flyer.jpg" alt="Party Flyer" class="flyer-image">
+                </a>
+                
+                <div class="main-text">
+                    mah nehm is jef
+                </div>
+                
+            </div>
+
+            <!-- Events Section -->
+            <div id="events" class="section">
+                <h2>PAST EVENTS</h2>
+                
+                <div class="event">
+                    <div class="event-date">FEB 22, 2025</div>
+                    <div class="event-title">2014</div>
+                    <div class="main-text">
+                        <a href="https://drive.google.com/drive/folders/1xrRxNvxG3VYn7uP1jFDUHkfvv-nu7tIz?usp=sharing" target="_blank">
+                        <img src="2014POSTER (1).jpg" alt="2014 party flyer" class="flyer-image">
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event">
+                    <div class="event-date">FEB 15, 2025</div>
+                    <div class="event-title">VALENTINES &lt3 </div>
+                    <div class="main-text">
+                        <a href="https://drive.google.com/drive/folders/1xrRxNvxG3VYn7uP1jFDUHkfvv-nu7tIz?usp=sharing" target="_blank">
+                        <img src="PARTYPOSTER2.JPG" alt="valentines party flyer" class="flyer-image">
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event">
+                    <div class="event-date">FEB 01, 2025</div>
+                    <div class="event-title">VIRGINIA SLEAZE</div>
+                    <div class="main-text">
+                        <a href="https://drive.google.com/drive/folders/1r6aCc97aNK87hmtuwpRmuKBOL9GnP7J1?usp=drive_link" target="_blank">
+                        <img src="IMG_0497.JPG" alt="VA sleaze party flyer" class="flyer-image">
+                        </a>
+                        OUR FIRST PARTY :'&rpar;
+                        click for pic for pics :p
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div id="contact" class="section">
+                <h2>GET IN TOUCH</h2>
+                <div class="main-text">
+                    WANT TO BOOK US FOR YOUR EVENT? HAVE IDEAS FOR A <span class="emphasis">COLLABORATION</span>? OR JUST WANT TO SAY <span class="hashtag">#HI</span>?<br><br>
+                    
+                    HIT US UP AND LET'S MAKE SOMETHING <span class="emphasis">LEGENDARY</span> TOGETHER.
+                </div>
+                
+                <form class="contact-form">
+                    <input type="text" placeholder="YOUR NAME" required>
+                    <input type="email" placeholder="YOUR EMAIL" required>
+                    <textarea rows="5" placeholder="TELL US ABOUT YOUR EVENT IDEAS, BOOKING INQUIRIES, OR JUST SAY HI!" required></textarea>
+                    <button type="submit">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="social-links">
+        <a href="https://www.instagram.com/huntclubhuntclub/?utm_source=ig_web_button_share_sheet" class="social-link">IG</a>
+    </div>
+
+    <script>
+        // Falling Stars Effect
+        function createFallingStar() {
+            const container = document.getElementById('fallingContainer');
+            const star = document.createElement('img');
+            
+            // Set your star image path here
+            star.src = 'starbys.png'; 
+            star.className = 'falling-star';
+            
+            // Random horizontal position
+            star.style.left = Math.random() * 100 + '%';
+            
+            // Random animation duration (3-7 seconds)
+            const duration = Math.random() * 4 + 3;
+            star.style.animationDuration = duration + 's';
+            
+            // Random delay
+            star.style.animationDelay = Math.random() * 2 + 's';
+            
+            // Random size variation
+            const size = Math.random() * 100 + 20; // 20-40px
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            
+            container.appendChild(star);
+            
+            // Remove star after animation completes
+            setTimeout(() => {
+                star.remove();
+            }, (duration + 2) * 1000);
+        }
+        
+        // Create stars continuously
+        setInterval(createFallingStar, 500); // New star every 0.5 seconds
+        
+        // Create initial batch of stars
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createFallingStar, i * 200);
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+        }
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('MESSAGE SENT! WE\'LL GET BACK TO YOU SOON! 🎉');
+            this.reset();
+        });
+
+    </script>
+</body>
+</html>
