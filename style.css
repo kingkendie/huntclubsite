@@ -190,6 +190,10 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
         }
 
         .main-text strong {
@@ -428,74 +432,76 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            body{
-                letter-spacing: 1px;
-            }
+    body{
+        letter-spacing: 1px;
+    }
 
-            .logo{
-                font-size: clamp(4rem, 15vw, 6rem);
-                letter-spacing: 1px;
-            }
+    .logo{
+        font-size: clamp(2rem, 10vw, 4rem);  
+        letter-spacing: 1px;
+    }
 
-            .main-text {
-                font-size: clamp(2rem, 4.5vw, 2rem);
-                padding: 0 1rem;
-                letter-spacing: 1px;
-                line-height: 1.5;
-                text-align: center;
-            }
+    .main-text {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);  
+        padding: 1rem;  
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+        text-align: center;
+    }
 
-            .cta {
-                font-size: clamp(2rem, 4.5vw, 2rem);
-                letter-spacing: 1px;
-                padding: 0 1rem;
-            }
+    .cta {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);  
+        letter-spacing: 1px;
+        padding: 0.8rem 1rem;
+    }
 
-            .final-welcome {
-                font-size: clamp(1.2rem, 4vw, 2rem);
-                letter-spacing: 1px;
-                padding: 0 1rem;
-            }
+    .final-welcome {
+        font-size: clamp(1rem, 3.5vw, 1.5rem);  
+        letter-spacing: 1px;
+        padding: 0 1rem;
+    }
 
-            .dress-code-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-            }
+    .flyer-image {
+        width: 95%;  
+        max-width: 400px;  
+    }
 
-            .dress-code-image {
-                height: 150px;
-            }
+    .dress-code-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;  
+        padding: 0 0.5rem;  
+    }
 
-            .dress-code-title {
-                font-size: clamp(1.2rem, 5vw, 2rem);
-                letter-spacing: 2px;
-            }
+    .dress-code-image {
+        height: 120px;  
+    }
 
-            .menu {
-                position: static;
-                margin-bottom: 2rem;
-                text-align: center;
-            }
-            
-            .menu-item {
-                display: inline-block;
-                margin-right: 1rem;
-                margin-bottom: 0.5rem;
-                font-size: 1.3rem;
-            }
-            
-            .social-links {
-                position: static;
-                flex-direction: row;
-                justify-content: center;
-                margin-top: 2rem;
-            }
-            
-            .main-text {
-                text-align: center;
-            }
-            
-            .container {
-                padding: 1rem 0.5rem;
-            }
-        }
+    .dress-code-title {
+        font-size: clamp(1rem, 4vw, 1.5rem);  
+        letter-spacing: 1px;
+    }
+
+    .menu {
+        position: static;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .menu-item {
+        display: inline-block;
+        margin-right: 0.8rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem; 
+    }
+    
+    .social-links {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    
+    .container {
+        padding: 1rem 0.5rem;
+    }
+}
