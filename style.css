@@ -1,6 +1,6 @@
 @font-face {
-            font-family: 'Papyrus';
-            src: url('latin func/PAPYRUS.TTF') format('truetype');
+            font-family: 'Consola';
+            src: url('latin func/consola.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Papyrus', monospace;
-            background: url('latin func/back3.jpg') center left /*#ffffff*/;
+            font-family: 'Consola', monospace;
+            background: url('latin func/4.jpg') center left /*#ffffff*/;
             background-size: cover;
             color: #ffffff;
             overflow-x: hidden;
@@ -34,7 +34,7 @@
             position: relative;
         }
 
-        /* Glitch Background Effect */
+        /* Glitch Background Effect 
         .container::before {
             content: '';
             position: absolute;
@@ -54,11 +54,11 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
-        }
+        }*/
 
         /* Logo/Title */
         .logo {
-            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-size: clamp(2rem, 8vw, 6rem);
             font-weight: 900;
             margin-bottom: 2rem;
             color: #ffffff;
@@ -66,7 +66,7 @@
                 0 0 10px #6ae3f95f,
                 0 0 20px #6ae3f95f,
                 0 0 30px #6ae3f95f;*/
-            animation: glitch 2s infinite;
+            /*animation: glitch 2s infinite;*/
             line-height: 1.1;
         }
 
@@ -208,9 +208,9 @@
             font-size: clamp(1.2rem, 3vw, 2rem);
             margin: 3rem 0;
             color: #ffffff;
-            text-shadow: 
+            /*text-shadow: 
                 0 0 10px #6ae3f95f,
-                0 0 20px #6ae3f95f;
+                0 0 20px #ffffff5f;*/
             animation: pulse 2s ease-in-out infinite alternate;
         }
 
