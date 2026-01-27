@@ -11,9 +11,13 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Consola', monospace;
-            background: url('latin func/4.jpg') center left /*#ffffff*/;
+            background: url('latin func/4.jpg') center center /*#ffffff*/;
             background-size: cover;
             color: #ffffff;
             overflow-x: hidden;
