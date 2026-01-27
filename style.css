@@ -242,7 +242,7 @@
 
         .menu-item {
             display: block;
-            color: #6ae3f95f;
+            color: #ffffff;
             text-decoration: none;
             margin-bottom: 1rem;
             font-size: 1.1rem;
@@ -446,7 +446,7 @@
         padding: 1rem;  
         letter-spacing: 0.5px;
         line-height: 1.4;
-        text-align: center;
+        text-align: left;
     }
 
     .cta {
